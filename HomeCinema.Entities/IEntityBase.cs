@@ -1,6 +1,6 @@
 ﻿namespace HomeCinema.Entities
 {
-    interface IEntityBase
+    public interface IEntityBase
     {
         int ID { get; set; }
     }
