@@ -10,5 +10,6 @@ namespace HomeCinema.Entities
         public DateTime RentalDate { get; set; }
         public Nullable<DateTime> ReturnedDate { get; set; }
         public virtual Stock Stock { get; set; }
+        public string Status { get; set; }
     }
 }

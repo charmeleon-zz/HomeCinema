@@ -5,7 +5,7 @@ using HomeCinema.Entities;
 
 namespace HomeCinema.Data.Configurations
 {
-    class EntityBaseConfiguration<T> : EntityTypeConfiguration<T>
+    public class EntityBaseConfiguration<T> : EntityTypeConfiguration<T>
         where T : class, IEntityBase
     {
         public EntityBaseConfiguration()
