@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using HomeCinema.Web.Mappings;
 using System.Web.Http;
 
 namespace HomeCinema.Web.App_Start
@@ -10,7 +7,10 @@ namespace HomeCinema.Web.App_Start
     {
         public static void Run()
         {
+            // Configure autofac
             AutofacWebApiConfig.Initialize(GlobalConfiguration.Configuration);
+            // Configure automapper
+            AutoMapperConfiguration.Configure();
         }
     }
 }
