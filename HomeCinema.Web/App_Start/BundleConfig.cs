@@ -6,7 +6,7 @@ namespace HomeCinema.Web.App_Start
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            var vendorPath = "~/Scripts/Vendors";
+            var vendorPath = "~/Scripts/vendors";
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 $"{vendorPath}/modernizr.js"));
             bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
@@ -30,7 +30,7 @@ namespace HomeCinema.Web.App_Start
                 $"{vendorPath}/jquery.fancybox-media.js",
                 $"{vendorPath}/loading-bar.js"));
 
-            var spaPath = vendorPath + "/spa";
+            var spaPath = "~/Scripts/spa";
             bundles.Add(new ScriptBundle("~/bundles/spa").Include(
                 $"{spaPath}/modules/common.core.js",
                 $"{spaPath}/modules/common.ui.js",

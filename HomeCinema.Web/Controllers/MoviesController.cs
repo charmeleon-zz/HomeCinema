@@ -3,7 +3,6 @@ using HomeCinema.Data.Infrastructure;
 using HomeCinema.Data.Repositories;
 using HomeCinema.Entities;
 using HomeCinema.Web.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -12,6 +11,8 @@ using System.Web.Http;
 
 namespace HomeCinema.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [RoutePrefix("api/movies")]
     public class MoviesController : ApiControllerBase
     {
         private readonly IEntityBaseRepository<Movie> movieRepository;

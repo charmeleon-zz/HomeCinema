@@ -6,11 +6,6 @@
     apiService.$inject = ['$http', '$location', 'notificationService', '$rootScope'];
 
     function apiService($http, $location, notificationService, $rootScope) {
-        var service = {
-            get: get,
-            post: post
-        };
-
         function get(url, config, success, failure) {
             return $http.get(url, config)
                 .then(function (result) {
@@ -43,6 +38,12 @@
                 });
         }
 
+        var service = {
+            get: get,
+            post: post
+        };
+
         return service;
     }
+
 })(angular.module('common.core'));

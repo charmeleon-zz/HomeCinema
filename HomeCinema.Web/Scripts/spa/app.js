@@ -2,42 +2,77 @@
     'use strict';
 
     angular.module('homeCinema', ['common.core', 'common.ui'])
-        .configure(config);
+        .config(config)
+        .run(run);
 
     config.$inject = ['$routeProvider'];
     function config($routeProvider) {
         $routeProvider
             .when("/", {
-                templateUrl: "scripts/spa/home/index.html",
+                templateUrl: "/Scripts/spa/home/index.html",
                 controller: "indexCtrl"
             })
             .when("/login", {
-                templateUrl: "scripts/spa/account/login.html",
+                templateUrl: "/Scripts/spa/account/login.html",
                 controller: "loginCtrl"
             })
             .when("/register", {
-                templateUrl: "scripts/spa/account/register.html",
+                templateUrl: "/Scripts/spa/account/register.html",
                 controller: "registerCtrl"
             })
             .when("/movies", {
-                templateUrl: "scripts/spa/movies/movies.html",
+                templateUrl: "/Scripts/spa/movies/movies.html",
                 controller: "moviesCtrl"
             })
             .when("/movies/add", {
-                templateUrl: "scripts/spa/movies/add.html",
+                templateUrl: "/Scripts/spa/movies/add.html",
                 controller: "moviesAddCtrl"
             })
             .when("/movies/:id", {
-                templateUrl: "scripts/spa/movies/details.html",
+                templateUrl: "/Scripts/spa/movies/details.html",
                 controller: "moviesDetailsCtrl"
             })
             .when("/movies/edit/:id", {
-                templateUrl: "scripts/spa/movies/edit.html",
+                templateUrl: "/Scripts/spa/movies/edit.html",
                 controller: "movieEditCtrl"
             })
             .when("/rental", {
-                templateUrl: "scripts/spa/rental/rental.html",
+                templateUrl: "/Scripts/spa/rental/rental.html",
                 controller: "rentStatsCtrl"
             }).otherwise({ redirectTo: "/" });
+    }
+
+    run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
+
+    function run($rootScope, $location, $cookieStore, $http) {
+        $rootScope.repository = $cookieStore.get('repository') || {};
+
+        if ($rootScope.repository.loggedUser) {
+            $http.defaults.headers.common['Authorization'] = $rootScope.repository.loggedUser.authdata;
+        }
+
+        $(document).ready(function () {
+            $('.fancybox').fancybox({
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+
+            $('.fancybox-media').fancybox({
+                openEffect: 'none',
+                closeEffect: 'none',
+                helpers: {
+                    media: {}
+                }
+            });
+        });
+    }
+
+    isAuthenticated.$inject = ['membershipService', '$rootScope', '$location'];
+
+    function isAuthenticated(membershipService, $rootScope, $location) {
+        if (!membershipService.isUserLoggedIn()) {
+            $rootScope.previousState = $location.path();
+            $location.path('/login');
+        }
     }
 })();
