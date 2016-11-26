@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Http;
 using HomeCinema.Web.App_Start;
 using System.Web.Optimization;
+using System.Web.Routing;
 
 namespace HomeCinema.Web
 {
@@ -20,7 +21,7 @@ namespace HomeCinema.Web
             GlobalConfiguration.Configuration.EnsureInitialized();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //GlobalConfiguration.Configure(WebApiConfig.Register);
-            //RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);            
         }
     }
 }

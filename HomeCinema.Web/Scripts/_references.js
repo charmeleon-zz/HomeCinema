@@ -1,5 +1,6 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="spa/app.js" />
+/// <reference path="spa/home/indexctrl.js" />
 /// <reference path="spa/home/rootctrl.js" />
 /// <reference path="spa/layout/sidebar.directive.js" />
 /// <reference path="spa/layout/topbar.directive.js" />

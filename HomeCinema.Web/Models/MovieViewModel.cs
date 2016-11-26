@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomeCinema.Web.Infrastructure.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace HomeCinema.Web.Models
         public int NumberOfStocks { get; set; }
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var validator = new MovieViewModelValidator();
+            var validator = new MoviewViewModelValidator();
             var result = validator.Validate(this);
             return result.Errors.Select(item => new ValidationResult(item.ErrorMessage, new[] { item.PropertyName }));
         }
