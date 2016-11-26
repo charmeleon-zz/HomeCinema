@@ -3,7 +3,7 @@ namespace HomeCinema.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class CreateTables : DbMigration
     {
         public override void Up()
         {

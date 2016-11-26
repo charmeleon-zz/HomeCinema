@@ -70,7 +70,10 @@
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201611210152096_InitialMigration.cs" />
+    <Compile Include="Migrations\201611262035316_CreateTables.cs" />
+    <Compile Include="Migrations\201611262035316_CreateTables.Designer.cs">
+      <DependentUpon>201611262035316_CreateTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntityBaseRepository.cs" />
@@ -87,15 +90,15 @@
     <Content Include="uk\MockData.resources.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611210152096_InitialMigration.resx">
-      <DependentUpon>201611210152096_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\HomeCinema.Entities\HomeCinema.Entities.csproj">
       <Project>{f78ceae8-5ca5-4bf5-8b51-e1507c1a6e3c}</Project>
       <Name>HomeCinema.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611262035316_CreateTables.resx">
+      <DependentUpon>201611262035316_CreateTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
