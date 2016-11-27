@@ -63,7 +63,7 @@ namespace HomeCinema.Web.App_Start
                 $"{spaPath}/rental/rentStatsCtrl.js"
                 ));
 
-            var content = "~/content";
+            var content = "~/Content/css";
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 $"{content}/site.css",
                 $"{content}/bootstrap.css",

@@ -39,7 +39,18 @@
             .when("/rental", {
                 templateUrl: "/Scripts/spa/rental/rental.html",
                 controller: "rentStatsCtrl"
-            }).otherwise({ redirectTo: "/" });
+            })
+            .when("/customers", {
+                templateUrl: "/Scripts/spa/customers/customers.html",
+                controller: "customersCtrl"
+            })
+            .when("/customers/register", {
+                templateUrl: "/Scripts/spa/customers/register.html",
+                controller: "customersRegCtrl",
+                // Check that the user is authenticated before the route changes
+                resolve: {isAuthenticated: isAuthenticated}
+            })
+            .otherwise({ redirectTo: "/" });
     }
 
     run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];

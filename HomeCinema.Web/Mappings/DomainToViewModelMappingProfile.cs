@@ -27,7 +27,7 @@ namespace HomeCinema.Web.Mappings
                     .ForMember(vm => vm.Image, map => map.MapFrom(m => string.IsNullOrEmpty(m.Image) == true ? "unknown.jpg" : m.Image));
             Mapper.CreateMap<Genre, GenreViewModel>()
                 .ForMember(vm => vm.NumberOfMovies, map => map.MapFrom(g => g.Movies.Count()));
-            //Mapper.CreateMap<Customer, CustomerViewModel>();
+            Mapper.CreateMap<Customer, CustomerViewModel>();
             //Mapper.CreateMap<Stock, StockViewModel>();
             //Mapper.CreateMap<Rental, RentalViewModel>();
         }
