@@ -36,6 +36,9 @@ namespace HomeCinema.Web.App_Start
             containerBuilder.RegisterType<EncryptionService>()
                 .As<IEncyptionService>()
                 .InstancePerRequest();
+            containerBuilder.RegisterType<MembershipService>()
+                .As<IMembershipService>()
+                .InstancePerRequest();
             Container = containerBuilder.Build();
 
             return Container;
@@ -43,7 +46,9 @@ namespace HomeCinema.Web.App_Start
 
         public static void Initialize(HttpConfiguration config, IContainer container)
         {
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            var dependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver = dependencyResolver;
+            config.DependencyResolver = dependencyResolver;
         }
     }
 }

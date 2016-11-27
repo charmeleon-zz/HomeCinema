@@ -196,7 +196,7 @@
     <Content Include="Scripts\spa\directives\availableMovie.directive.js" />
     <Content Include="Scripts\spa\directives\availableMovie.html" />
     <Content Include="Scripts\spa\directives\componentRating.directive.js" />
-    <Content Include="Scripts\spa\directives\customers.html" />
+    <Content Include="Scripts\spa\customers\customers.html" />
     <Content Include="Scripts\spa\home\index.html" />
     <Content Include="Scripts\spa\home\indexCtrl.js" />
     <Content Include="Scripts\spa\home\rootCtrl.js" />

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HomeCinema.Web.Controllers;
 using HomeCinema.Web.Models;
 
 namespace HomeCinema.Web.Infrastructure.Validators

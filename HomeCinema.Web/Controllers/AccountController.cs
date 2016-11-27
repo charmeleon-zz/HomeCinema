@@ -9,14 +9,17 @@ using System.Net;
 
 namespace HomeCinema.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [RoutePrefix("api/Account")]
     public class AccountController : ApiControllerBase
     {
         private readonly IMembershipService membershipService;
 
-        public AccountController(IMembershipService membershipService,
-            IEntityBaseRepository<Error> errorRepository, IUnitOfWork unitOfWork) : base(errorRepository, unitOfWork)
+        public AccountController(IMembershipService _membershipService,
+            IEntityBaseRepository<Error> _errorRepository, IUnitOfWork _unitOfWork)
+            : base(_errorRepository, _unitOfWork)
         {
-            this.membershipService = membershipService;
+            membershipService = _membershipService;
         }
 
         [AllowAnonymous]
@@ -65,7 +68,7 @@ namespace HomeCinema.Web.Controllers
                 }
                 else
                 {
-                    Entities.User _user = membershipService.CreateUser(user.Username, user.Email, user.Password, new int[] { 1 });
+                    User _user = membershipService.CreateUser(user.Username, user.Email, user.Password, new int[] { 1 });
                     if (null != user)
                     {
                         response = request.CreateResponse(HttpStatusCode.OK, new { success = true });

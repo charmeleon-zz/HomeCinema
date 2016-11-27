@@ -9,6 +9,7 @@
     function loginCtrl($scope, membershipService, notificationService,
         $rootScope, $location) {
         $scope.pageClass = 'page-login';
+        $scope.login = login;
         $scope.user = {};
 
         function login() {
@@ -18,7 +19,7 @@
         function loginCompleted(result) {
             if (result.data.success) {
                 membershipService.saveCredentials($scope.user);
-                notificationService.displaySuccess('Heloo ' + $scope.user.username);
+                notificationService.displaySuccess('Hello ' + $scope.user.username);
                 $scope.userData.displayUserInfo();
                 if ($rootScope.previousState) {
                     $location.path($rootScope.previousState);

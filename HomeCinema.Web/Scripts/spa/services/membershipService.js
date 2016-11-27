@@ -37,7 +37,7 @@
             $http.defaults.headers.common.Authorization = '';
         }
         function isUserLoggedIn() {
-            return $rootScope.repository.loggedUser != null;
+            return null != $rootScope.repository.loggedUser;
         }
 
         function loginFailed(response) {
