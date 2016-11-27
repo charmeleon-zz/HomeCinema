@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using HomeCinema.Data.Infrastructure;
 using HomeCinema.Data.Repositories;
 using HomeCinema.Entities;
@@ -12,6 +11,7 @@ using AutoMapper;
 using HomeCinema.Web.Infrastructure.Core;
 using System.Net;
 using HomeCinema.Web.Infrastructure.Extensions;
+using HomeCinema.Data.Extensions;
 
 namespace HomeCinema.Web.Controllers
 {
@@ -72,7 +72,7 @@ namespace HomeCinema.Web.Controllers
                     Items = customersVm
                 };
 
-                response = request.CreateResponse<PaginationSet<CustomerViewModel>>(HttpStatusCode.OK, pagedSet);
+                response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
 
                 return response;
             });
@@ -95,7 +95,6 @@ namespace HomeCinema.Web.Controllers
                 else
                 {
                     Customer _customer = customerRepository.GetSingle(customer.ID);
-                    // TODO: Implement UpdateCustomer
                     _customer.UpdateCustomer(customer);
                     _unitOfWork.Commit();
 
@@ -122,7 +121,7 @@ namespace HomeCinema.Web.Controllers
                 }
                 else
                 {
-                    if (customerRepository.UserExists(customer.Email, customer.IdentityCard))
+                    if (customerRepository.CustomerExists(customer.Email, customer.IdentityCard))
                     {
                         ModelState.AddModelError("Invalid user", "Email or identity card already exists");
                         response = request.CreateResponse(HttpStatusCode.BadRequest,
@@ -138,7 +137,7 @@ namespace HomeCinema.Web.Controllers
 
                         // Update view model by re-mapping the just-committed newCustomer
                         customer = Mapper.Map<Customer, CustomerViewModel>(newCustomer);
-                        response = request.CreateResponse<CustomerViewModel>(HttpStatusCode.Created, customer);
+                        response = request.CreateResponse(HttpStatusCode.Created, customer);
                     }
                 }
 
