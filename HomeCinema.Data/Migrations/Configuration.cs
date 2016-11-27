@@ -2,7 +2,7 @@ namespace HomeCinema.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    using HomeCinema.Entities;
+    using Entities;
     using System.Collections.Generic;
 
     internal sealed class Configuration : DbMigrationsConfiguration<HomeCinema.Data.HomeCinemaContext>
@@ -12,7 +12,7 @@ namespace HomeCinema.Data.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(HomeCinema.Data.HomeCinemaContext context)
+        protected override void Seed(HomeCinemaContext context)
         {
             // create genres
             context.GenreSet.AddOrUpdate(g => g.Name, GenerateGenres());

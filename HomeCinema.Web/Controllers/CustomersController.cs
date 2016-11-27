@@ -11,6 +11,7 @@ using HomeCinema.Web.Models;
 using AutoMapper;
 using HomeCinema.Web.Infrastructure.Core;
 using System.Net;
+using HomeCinema.Web.Infrastructure.Extensions;
 
 namespace HomeCinema.Web.Controllers
 {
