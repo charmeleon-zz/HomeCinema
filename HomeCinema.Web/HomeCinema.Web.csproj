@@ -208,8 +208,12 @@
     <Content Include="Scripts\spa\layout\topBar.html" />
     <Content Include="Scripts\spa\modules\common.core.js" />
     <Content Include="Scripts\spa\modules\common.ui.js" />
+    <Content Include="Scripts\spa\movies\details.html" />
     <Content Include="Scripts\spa\movies\movieCtrl.js" />
+    <Content Include="Scripts\spa\movies\movieDetailsCtrl.js" />
     <Content Include="Scripts\spa\movies\movies.html" />
+    <Content Include="Scripts\spa\rental\rentMovieCtrl.js" />
+    <Content Include="Scripts\spa\rental\rentMovieModal.html" />
     <Content Include="Scripts\spa\services\apiService.js" />
     <Content Include="Scripts\spa\services\membershipService.js" />
     <Content Include="Scripts\spa\services\notificationService.js" />
@@ -244,10 +248,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\RentalsController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Infrastructure\Extensions\EntitiesExtensions.cs" />
     <Compile Include="Infrastructure\Validators\AccountViewModelValidators.cs" />
     <Compile Include="Infrastructure\Validators\CustomerViewModelValidator.cs" />
+    <Compile Include="Infrastructure\Validators\StockViewModelValidator.cs" />
     <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -296,6 +302,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Rentals\" />
+    <Folder Include="Views\Stocks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HomeCinema.Data\HomeCinema.Data.csproj">

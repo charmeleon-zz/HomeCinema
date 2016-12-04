@@ -28,8 +28,8 @@ namespace HomeCinema.Web.Mappings
             Mapper.CreateMap<Genre, GenreViewModel>()
                 .ForMember(vm => vm.NumberOfMovies, map => map.MapFrom(g => g.Movies.Count()));
             Mapper.CreateMap<Customer, CustomerViewModel>();
-            //Mapper.CreateMap<Stock, StockViewModel>();
-            //Mapper.CreateMap<Rental, RentalViewModel>();
+            Mapper.CreateMap<Stock, StockViewModel>();
+            Mapper.CreateMap<Rental, RentalViewModel>();
         }
     }
 }

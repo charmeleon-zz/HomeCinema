@@ -7,6 +7,8 @@ using HomeCinema.Web.Models;
 using System.Net.Http;
 using System.Net;
 using System;
+using HomeCinema.Data.Extensions;
+using AutoMapper;
 
 namespace HomeCinema.Web.Controllers
 {
@@ -104,6 +106,54 @@ namespace HomeCinema.Web.Controllers
                     _unitOfWork.Commit();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
+                }
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Route("rent/{customerId:int}/{stockId:int}")]
+        public HttpResponseMessage Rent(HttpRequestMessage request, int customerId, int stockId)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                var customer = customerRepository.GetSingle(customerId);
+                var stock = stockRepository.GetSingle(stockId);
+
+                if (null == customer || null == stock)
+                {
+                    response = request.CreateErrorResponse(HttpStatusCode.NotFound,
+                        "Invalid customer or stock");
+                }
+                else
+                {
+                    if (stock.IsAvailable)
+                    {
+                        var rental = new Rental
+                        {
+                            CustomerId = customerId,
+                            StockId = stockId,
+                            RentalDate = DateTime.Now,
+                            Status = "Borrowed"
+                        };
+
+                        rentalRepository.Add(rental);
+                        stock.IsAvailable = false;
+
+                        _unitOfWork.Commit();
+
+                        var rentalVm = Mapper.Map<Rental, RentalViewModel>(rental);
+
+                        response = request.CreateResponse(HttpStatusCode.Created, rentalVm);
+                    }
+                    else
+                    {
+                        response = request.CreateErrorResponse(HttpStatusCode.BadRequest,
+                            "Selected stock is not available anymore");
+                    }
                 }
 
                 return response;
